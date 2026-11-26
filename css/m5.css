@@ -1,0 +1,125 @@
+/* ============================================================
+   m5.css — 模块5：LeNet 张量流水线（真实全连接版）
+   ============================================================ */
+
+.concept-panel {
+  background: #fbfbfc;
+  border-left: 4px solid #2980b9;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+.concept-panel h4 { margin: 0 0 8px 0; font-size: 14px; color: #2980b9; }
+.concept-panel p { margin: 0 0 8px 0; font-size: 13px; color: #444; }
+.concept-panel b { color: #c0392b; }
+
+/* ---------- 顶部流水线 ---------- */
+.pipeline-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  padding: 20px; background: #fff; border: 1px solid #dcdcdc;
+  margin-bottom: 20px; overflow-x: auto;
+}
+.pipe-node {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 10px 14px; border: 1px solid #e8e8e8; background: #fafafa;
+  border-radius: 4px; cursor: pointer; min-width: 80px; transition: all 0.2s;
+}
+.pipe-node:hover { border-color: #2980b9; background: #f5fafd; }
+.pipe-node.active {
+  border-color: #2980b9; background: #eaf3f9;
+  box-shadow: 0 2px 6px rgba(41,128,185,0.15); transform: translateY(-2px);
+}
+.node-name { font-size: 12px; color: #555; font-weight: 600; margin-bottom: 4px; }
+.pipe-node.active .node-name { color: #2980b9; }
+.node-shape { font-family: Consolas, monospace; font-size: 11px; color: #888; background: #fff; padding: 2px 6px; border-radius: 2px; border: 1px solid #eee; }
+.pipe-arrow { color: #ccc; font-size: 16px; }
+
+/* ---------- 详情展示区 ---------- */
+.detail-stage {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 40px; padding: 40px 20px; background: #fff;
+  border: 1px solid #dcdcdc; min-height: 360px;
+}
+
+.tensor-view {
+  display: flex; flex-direction: column; align-items: center; gap: 16px; width: 220px;
+}
+.tensor-title {
+  font-size: 14px; font-weight: 600; color: #333; font-family: Georgia, serif;
+  text-align: center; line-height: 1.4; height: 44px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.tensor-title span {
+  display: block; font-size: 12px; color: #999; font-weight: normal;
+  margin-top: 4px; font-family: Consolas, monospace;
+}
+
+/* ---------- 2.5D 张量卡 ---------- */
+.stack-container {
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.layer-card {
+  position: absolute; background: #fff; border: 1px solid #b0b0b0;
+  border-radius: 2px; box-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+  display: flex; align-items: center; justify-content: center; transition: all 0.3s;
+}
+.grid-box { display: grid; background: #fff; width: 100%; height: 100%; overflow: hidden; }
+.grid-cell { background: #fff; border-right: 1px solid #f5f5f5; border-bottom: 1px solid #f5f5f5; }
+.grid-cell.on { background: #333; }
+
+/* ---------- 展平层（长面条） ---------- */
+.flatten-container {
+  padding: 10px; background: #fff; border: 1px solid #b0b0b0;
+  border-radius: 4px; box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ---------- 全连接神经元（扁长型） ---------- */
+.fc-grid {
+  display: grid; gap: 4px; padding: 10px; background: #fafafa;
+  border: 1px solid #dcdcdc; border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); justify-content: center;
+}
+.fc-neuron {
+  width: 6px; height: 6px; border-radius: 50%;
+  border: 1px solid #999; background: #fff; transition: all 0.2s;
+}
+.fc-neuron.active {
+  background: #c0392b; border-color: #c0392b; transform: scale(1.1);
+}
+.fc-neuron.out-node {
+  width: 16px; height: 16px; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-family: Consolas, monospace; color: #666;
+}
+.fc-neuron.out-node.active { color: #fff; font-weight: bold; }
+
+/* ---------- 中间运算区 ---------- */
+.op-box {
+  display: flex; flex-direction: column; align-items: center; gap: 12px; width: 240px;
+}
+.op-icon {
+  font-size: 24px; color: #2980b9; font-weight: bold;
+  background: #f5fafd; width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; border: 2px dashed #bce0fd;
+}
+.op-desc {
+  text-align: center; font-size: 13px; color: #555; line-height: 1.6;
+  background: #fafafa; padding: 12px; border-radius: 6px;
+  border: 1px solid #eee; width: 100%;
+}
+.op-desc b { color: #c0392b; }
+.op-formula {
+  font-family: Consolas, monospace; background: #fff; padding: 4px 10px;
+  border: 1px solid #dcdcdc; border-radius: 4px; font-size: 12px; color: #2980b9;
+}
+
+/* 新增：大号全连接网络 SVG */
+.fc-network-svg {
+  width: 220px;
+  height: 180px;
+  background: #fafafa;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  padding: 10px;
+}

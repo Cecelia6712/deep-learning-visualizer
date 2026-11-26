@@ -1,0 +1,162 @@
+/* ============================================================
+   m3.css — 模块3：池化层
+   ============================================================ */
+
+/* ---------- 概念解释区 ---------- */
+.concept-panel {
+  background: #fbfbfc;
+  border-left: 4px solid #27ae60;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+.concept-panel h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #27ae60;
+}
+.concept-panel p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #444;
+}
+.concept-panel b { color: #c0392b; }
+
+/* ---------- 顶部操作栏 ---------- */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 18px;
+}
+
+/* 分段控制器（Max/Avg 切换） */
+.segmented {
+  display: inline-flex;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+}
+.seg-btn {
+  padding: 6px 16px;
+  font-size: 13px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.15s;
+}
+.seg-btn:hover { background: #f5fafd; }
+.seg-btn.active {
+  background: #2980b9;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- 全景视图 ---------- */
+.stage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 10px 0;
+}
+.stage-col { display: flex; flex-direction: column; gap: 10px; }
+.col-label { font-size: 13px; color: #555; font-weight: 600; font-family: Georgia, serif; }
+
+/* 矩阵网格 */
+.matrix {
+  display: grid;
+  gap: 3px;
+  justify-content: start;
+}
+
+/* 基础格子 */
+.cell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  color: #333;
+  transition: all 0.2s;
+}
+
+/* 输入矩阵中的滑动窗口高亮 */
+.cell.win { background: #eaf3f9; border-color: #2980b9; color: #1b4f72; }
+/* 如果是 Max Pooling，窗口里的最大值高亮 */
+.cell.win.max-hit { background: #fdf1ef; border-color: #c0392b; color: #c0392b; font-weight: bold; transform: scale(1.05); z-index: 2; }
+
+/* 输出矩阵的格子 */
+.cell.out { background: #fdfdfd; color: #dadada; }
+.cell.out.done { background: #fff; color: #333; }
+.cell.out.cur { border-color: #c0392b; background: #fdf1ef; color: #c0392b; font-weight: bold; transform: scale(1.05); z-index: 2; }
+
+/* 中间的运算符号 */
+.stage-op {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  padding-top: 30px;
+}
+.op-icon {
+  font-size: 24px;
+  font-family: Georgia, serif;
+  color: #999;
+  padding: 10px 16px;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+}
+.op-arrow { font-size: 20px; color: #ccc; margin-top: 8px; }
+
+/* ---------- 计算明细区 ---------- */
+.detail-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  min-height: 100px;
+}
+
+/* 提取出来的数字卡片 */
+.extracted-nums {
+  display: flex;
+  gap: 8px;
+}
+.num-card {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-family: Consolas, monospace;
+  font-size: 16px;
+  color: #333;
+  border-radius: 4px;
+}
+.num-card.max { border-color: #c0392b; color: #c0392b; font-weight: bold; box-shadow: 0 0 0 2px #fdf1ef inset; }
+
+/* 计算过程文字 */
+.math-text {
+  font-family: Consolas, monospace;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+.math-text .highlight { color: #c0392b; font-weight: bold; font-size: 18px; }
+.math-text .dim { color: #999; font-size: 13px; }

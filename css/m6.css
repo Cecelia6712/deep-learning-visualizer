@@ -1,0 +1,150 @@
+/* ============================================================
+   m6.css — 模块6：过拟合实验台
+   ============================================================ */
+
+/* ---------- 概念解释区 ---------- */
+.concept-panel {
+  background: #fbfbfc;
+  border-left: 4px solid #c0392b;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+.concept-panel h4 { margin: 0 0 8px 0; font-size: 14px; color: #c0392b; }
+.concept-panel p { margin: 0 0 8px 0; font-size: 13px; color: #444; }
+.concept-panel b { color: #2980b9; }
+
+/* ---------- 实验台布局 ---------- */
+.lab-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* 左侧图表区 */
+.chart-panel {
+  flex: 1;
+  min-width: 500px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.chart-title { font-size: 14px; font-weight: 600; color: #333; font-family: Georgia, serif; }
+
+/* 图例 */
+.legend-box {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  font-family: Consolas, monospace;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-line { width: 16px; height: 3px; border-radius: 2px; }
+.legend-line.train { background: #c0392b; }
+.legend-line.test { background: #2980b9; }
+
+/* 画布 */
+.canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 右侧控制区 */
+.control-panel {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status-box {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  padding: 16px;
+}
+.status-title {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+.status-data {
+  display: flex;
+  justify-content: space-between;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.status-data .val { font-weight: 600; }
+.status-data .val.train { color: #c0392b; }
+.status-data .val.test { color: #2980b9; }
+
+/* 诊断标签 */
+.diagnosis-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+.diag-under { background: #fef9e7; color: #d4ac0d; border: 1px solid #f9e79f; }
+.diag-best { background: #eafaf1; color: #27ae60; border: 1px solid #a9dfbf; }
+.diag-over { background: #fdf1ef; color: #c0392b; border: 1px solid #f5b7b1; }
+.diag-normal { background: #f4f6f7; color: #7f8c8d; border: 1px solid #d5dbdb; }
+
+/* 解药按钮组 */
+.antidote-box {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.antidote-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+.antidote-btn {
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid #dcdcdc;
+  background: #fafafa;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.antidote-btn:hover { background: #f0f0f0; border-color: #2980b9; }
+.antidote-btn.active { background: #eaf3f9; border-color: #2980b9; color: #2980b9; font-weight: 600; }
+.antidote-btn .desc {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  font-weight: normal;
+  margin-top: 4px;
+}
+.antidote-btn.active .desc { color: #3498db; }

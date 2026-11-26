@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>卷积神经网络 · 可视化实验室</title>
+  
+<!-- ================= 样式文件 ================= -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/m1.css">
+<link rel="stylesheet" href="css/m2.css">
+<link rel="stylesheet" href="css/m3.css">
+<link rel="stylesheet" href="css/m4.css">
+<link rel="stylesheet" href="css/m5.css">
+<link rel="stylesheet" href="css/m6.css">
+</head>
+<body>
+
+<div class="layout">
+  <!-- 左侧侧边栏：导航由 JS 动态生成 -->
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>CNN 可视化实验室</h1>
+      <p>CHAPTER 4 · CONVOLUTIONAL NN</p>
+    </div>
+    <nav id="nav"></nav>
+  </aside>
+
+  <!-- 右侧主视区：模块内容由 JS 挂载 -->
+  <main class="main">
+    <div id="module-stage"></div>
+  </main>
+</div>
+
+<!-- ================= 脚本文件 ================= -->
+<!-- 1. 核心框架必须最先加载 -->
+<script src="js/lab.js"></script>
+
+<!-- 2. 各模块逻辑（按序号排列） -->
+<script src="js/m1.js"></script>
+<script src="js/m2.js"></script>
+<script src="js/m3.js"></script>
+<script src="js/m4.js"></script>
+<script src="js/m5.js"></script>
+<script src="js/m6.js"></script>
+
+<!-- 3. 启动主程序 -->
+<script>
+  Lab.start({
+    stage: document.getElementById('module-stage'),
+    nav: document.getElementById('nav')
+  });
+</script>
+
+</body>
+</html>

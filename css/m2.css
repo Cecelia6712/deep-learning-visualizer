@@ -1,0 +1,129 @@
+/* ============================================================
+   m2.css — 模块2：多通道与 1×1 卷积（大白话版）
+   ============================================================ */
+
+/* ---------- 概念解释区 ---------- */
+.concept-panel {
+  background: #fbfbfc;
+  border-left: 4px solid #2980b9;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+.concept-panel h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #2980b9;
+}
+.concept-panel p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #444;
+}
+.concept-panel b {
+  color: #c0392b;
+}
+
+/* ---------- 顶部形状说明栏 ---------- */
+.shape-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 18px;
+}
+.shape-box {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 8px 14px; background: #fafafa; border: 1px solid #dcdcdc; min-width: 104px;
+}
+.shape-box .sh-name { font-size: 11px; color: #999; }
+.shape-box .sh-val { font-family: Consolas, monospace; font-size: 14px; font-weight: 600; color: #2980b9; }
+.shape-box.kernel .sh-val { color: #27ae60; }
+.shape-box.out .sh-val { color: #c0392b; }
+.shape-arrow { font-size: 18px; color: #ccc; }
+
+/* ---------- 全景视图 ---------- */
+.overview-stage {
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; margin-bottom: 20px;
+}
+.ov-group { display: flex; flex-direction: column; gap: 8px; }
+.ov-title {
+  font-size: 13px; font-weight: 600; color: #555;
+  border-bottom: 1px solid #ddd; padding-bottom: 4px; font-family: Georgia, serif;
+}
+.ov-channels { display: flex; flex-direction: column; gap: 12px; }
+.ov-ch-item { display: flex; flex-direction: column; gap: 4px; }
+.ov-ch-label { font-size: 11px; color: #888; font-family: monospace; }
+
+/* 网格基础 */
+.matrix-grid { display: grid; gap: 2px; justify-content: start; }
+
+/* ---------- 通道颜色编码 ---------- */
+.ch-tag { display:inline-block; padding:1px 6px; border-radius:2px; color:#fff; font-size:10px; }
+.bg-ch0 { background: #e67e22; } /* 橙 */
+.bg-ch1 { background: #27ae60; } /* 绿 */
+.bg-ch2 { background: #2980b9; } /* 蓝 */
+
+/* 格子基础 */
+.ov-cell {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: Consolas, monospace; font-size: 11px;
+  border: 1px solid #dcdcdc; background: #fff; color: #333;
+  transition: all 0.15s;
+}
+.ov-cell.pad { border-style: dashed; color: #ccc; background: #fcfcfc; }
+
+/* 给格子加通道边框颜色 */
+.edge-ch0 { border-color: #e67e22 !important; }
+.edge-ch1 { border-color: #27ae60 !important; }
+.edge-ch2 { border-color: #2980b9 !important; }
+
+.ov-cell.win { background: #eaf3f9; color: #1b4f72; box-shadow: 0 0 0 2px #2980b9 inset; }
+.ov-cell.kernel { background: #f8fdfa; color: #1e6b41; }
+.ov-cell.out { background: #fdfdfd; color: #dadada; }
+.ov-cell.out.done { background: #ffffff; color: #333333; }
+.ov-cell.out.cur { border-color: #c0392b; background: #fdf1ef; color: #c0392b; font-weight: 600; box-shadow: 0 0 0 2px #c0392b inset; }
+
+/* ---------- 分步计算明细 ---------- */
+.step-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px; margin-bottom: 8px;
+  border: 1px solid #eee; background: #fafafa; opacity: 0.4; transition: all 0.2s;
+}
+.step-row.active { opacity: 1; border-color: #2980b9; background: #f5fafd; }
+.step-row.done { opacity: 1; border-color: #e8e8e8; background: #fff; }
+
+.mat-box { display: flex; flex-direction: column; gap: 4px; }
+.mat-title { font-size: 11px; color: #888; font-family: monospace; }
+.op { font-size: 18px; color: #ccc; font-family: monospace; margin: 0 8px; padding-top: 16px; }
+
+.sm-cell {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: Consolas, monospace; font-size: 10px;
+  border: 1px solid #dcdcdc; background: #fff;
+}
+.sm-cell.win { background: #eaf3f9; }
+.sm-cell.kernel { background: #f8fdfa; }
+
+.res-box {
+  min-width: 54px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid #ddd; background: #fff;
+  font-family: monospace; font-size: 13px; color: #999; margin-top: 16px;
+}
+.res-box.has-val { font-weight: 600; }
+.res-box.pos { color: #27ae60; border-color: #b7e0c9; background: #f8fdfa; }
+.res-box.neg { color: #c0392b; border-color: #e8b4ad; background: #fdf1ef; }
+
+/* 汇总行 */
+.res-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px; margin-top: 12px;
+  border-top: 1px solid #e8e8e8; background: #f9f9f9; opacity: 0.4;
+}
+.res-row.active { opacity: 1; border-top-color: #c0392b; background: #fdf1ef; }
