@@ -318,7 +318,7 @@
   }
 
   Lab.register({
-    id: 'm5',
+    id: 'ch4-m5',
     index: '05',
     title: 'LeNet 张量流水线',
     desc: 'LeNet 是由 Yann LeCun 提出的早期卷积神经网络。点击流水线，看看数据到底变了什么魔术。',
