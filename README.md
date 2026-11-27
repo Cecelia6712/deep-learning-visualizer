@@ -4,7 +4,7 @@
 
 本项目通过纯前端的原生技术，将深度学习（尤其是 CNN）中抽象的概念（如 Padding、Stride、卷积核滑动、池化等）转化为可交互的视觉实验。旨在帮助学习者、开发者或任何对 AI 感兴趣的人，通过“动手玩”来建立直观的物理直觉。
 ## 🧭 快速导航
-
+- 🌐 **在线体验 (Live Demo)**：[点击这里直接玩！](https://Cecelia6712.github.io/deep-learning-visualizer/)
 - 🌐 **项目入口**：[index.html](./index.html)
 - 📖 **开发必读**：[踩坑指南.md](./踩坑指南.md)（内含核心架构约束与 UI/UX 铁律）
 - 🎨 **全局样式**：[base.css](./css/base.css)
